@@ -1,0 +1,53 @@
+<div class="row" id="upload" >
+	<div class="col-md-3 col-sm-3">
+		<img alt="" class="img1" src="img/icon1.jpg" width="100%" height="195px">
+		<ui-view name="login"></ui-view>
+		<ui-view name="activity"></ui-view>
+	</div>
+	<div class="col-md-6 col-sm-6">
+		<div class="upload-container" ng-controller="bangController">
+			<p>上传龙牡体</p>
+			<div class="dd2">
+				<div class="row bang-container" > 
+					<div class="col-md-12">
+						<img alt="" src="img/icon1.png" class="bang-image">
+						<div class="form-container">
+							<form name="myForm" class="form-horizontal" ng-submit="save()"  novalidate="novalidate">
+								<div class="form-group">
+									<label for="username" class="col-sm-4 control-label">太BANG了！</label>
+								   <div class="col-sm-8">
+								  		<input class="form-control" ng-model="option.val1" type="text"
+									placeholder="你是中国的好男人，公认的国民老公！" required ng-minlength="4" ng-pattern="/^[\u4E00-\u9FA5]{4,}$/"/>
+								   </div>
+								</div>
+								<div class="form-group">
+									 <label for="username" class="col-sm-4 col-sm-offset-3 control-label ">会做到的，</label>
+								</div>
+								<div class="form-group">
+									<label for="username" class="col-sm-4 control-label">但你首先要</label>
+								   <div class="col-sm-8">
+								  		<input class="form-control" ng-model="option.val2" type="text"
+					placeholder="把我网上购物车里的订单全付了哦！"  required ng-minlength="4" ng-pattern="/^[\u4E00-\u9FA5]{4,}$/"/>
+								   </div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-4 col-sm-4">
+								    	 <button class="b1" type="submit"  ng-disabled="myForm.$invalid">提&emsp;交</button>
+								    </div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+	<div class="col-md-3 col-sm-3">
+		<ui-view name="rank"></ui-view>
+		<ui-view name="code"></ui-view>
+	</div>
+
+
+</div>

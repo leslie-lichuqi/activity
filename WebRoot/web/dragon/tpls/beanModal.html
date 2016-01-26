@@ -1,0 +1,43 @@
+ <div class="modal-content">
+   <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()" ><span aria-hidden="true">&times;</span></button>
+     <h4 class="modal-title">作品展示</h4>
+   </div>
+   <div class="modal-body">
+   		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">编号：</label>
+		    <div class="col-sm-10">
+		    	 <label for="inputEmail3" class="control-label">{{image.id+1000}}</label>
+		    </div>
+		  </div>
+		   <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">作品名：</label>
+		    <div class="col-sm-10">
+		    	<label for="inputEmail3" class="control-label">{{image.title}}</label>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">作&emsp;者：</label>
+		    <div class="col-sm-10">
+		    	<label for="inputEmail3" class="control-label">{{user.username}}</label>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">得票数：</label>
+		    <div class="col-sm-10">
+		    	<label for="inputEmail3" class="control-label">{{user.votes}}</label>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">作品：</label>
+		    <div class="col-sm-10">
+		    	<img alt="" style="display: block;margin: 10px auto;" width="100%" src="{{image.imageurl}}">
+		    </div>
+		  </div>
+		</form>
+   </div>
+   <div class="modal-footer">
+     <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+   </div>
+ </div><!-- /.modal-content -->

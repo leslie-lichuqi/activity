@@ -1,0 +1,59 @@
+﻿<ion-content ng-controller="listController">
+	<ion-refresher
+	    pulling-text="下拉刷新"
+	    on-refresh="doRefresh()"
+	    refreshing-icon="ion-loading-c"
+	    >
+	</ion-refresher>
+	<div id="list">
+		<img src="img/icon1.jpg" width="100%"/>
+		<p class="p1">作品展示</p>
+		<div class="btn-container">
+			<div>
+				<button class="b1" ui-sref="list({'zone':'东北赛区'})">东北赛区</button>
+			</div>
+			<div>
+				<button class="b2" ui-sref="list({'zone':'华东赛区'})">华东赛区</button>
+			</div>
+			<div>
+				<button class="b3" ui-sref="list({'zone':'华中赛区'})">华中赛区</button>
+			</div>
+		</div>
+		<div class="btn-container">
+			<div>
+				<button class="b1" ui-sref="list({'zone':'华南赛区'})">华南赛区</button>
+			</div>
+			<div>
+				<button class="b2" ui-sref="list({'zone':'西南赛区'})">西南赛区</button>
+			</div>
+			<div>
+				<button class="b3" ui-sref="list({'zone':'西北赛区'})">西北赛区</button>
+			</div>
+		</div>
+		<form class="from" name="myForm" ng-submit="search()">
+			<input type="text" placeholder="输入作品名或作者名或编号查找" ng-model="option.name" class="i1">
+			<button class="btn">搜  索</button>
+			<div class="clear"></div>
+		</form>
+		<div class="container">
+			<div class="wrap" ng-repeat="bean in list">
+				<div class="opus">
+					<div class="pic" ui-sref="bean({'id':bean.id})" style="background-image: url('{{bean.imageurl}}')"></div>
+					<p>编号：{{bean.id+1000}}</p>
+					<p>作品名：{{bean.title}}</p>
+					<p>作&emsp;者：{{bean.username}}</p>
+					<p>得票数：{{bean.votes}}</p>
+					<p>排&emsp;名：{{bean.rank}}</p>
+					<button class="btn" ng-click="vote(bean.userid,bean.username,bean)">投&emsp;票</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ion-infinite-scroll
+		ng-if="hasMoreDate()"
+	    on-infinite="loadMore()"
+	    icon="ion-loading-c"
+	    distance="15%"
+	    immediate-check="false">
+  	</ion-infinite-scroll>
+</ion-content>

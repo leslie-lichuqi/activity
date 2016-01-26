@@ -1,0 +1,38 @@
+.leslie-load-container{position: fixed;top:0px;left:0px;width: 100%;height: 100%;z-index: 1000}
+#loadingDiv{z-index: 100;position: fixed;left: 50%;margin-left: -135px;top: 50%;margin-top: -32px;padding: 0 20px;width: 230px;height: 65px;background-color:rgba(0, 0, 0, 0.7);border-radius: 12px;}
+#loadingDiv  p{display: inline-block;color:#fff;line-height:65px;font-size: 26px;}
+#loadingDiv img{vertical-align:text-bottom;margin: 0 10px 0 20px;}
+#alertDiv {position:fixed;z-index: 101;width: 100%;height: 100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.7); }
+#alertDiv .wrap{position: relative;width: 90%;background-color: #fff;top: 40%;margin-top: -25%;left: 50%;margin-left: -45%;/* border-radius: 12px; *//* padding: 20px 20px 0 20px; */box-sizing: border-box;text-align: center;}
+#alertDiv .alertTitle{padding: 20px;font-size: 16px;color: #fff;min-height: 150px;box-sizing: border-box;padding-left: 35%;}
+#alertDiv .alertContent{font-size: 26px;padding: 20px 0;color:#808080;border-bottom: 1px solid #808080;}
+#alertDiv .alertBtn{font-size: 16px;text-align: center;padding: 10px 30px;color: #fff;display: inline-block;margin: 10px;background: #1c95eb;border-radius: 4px;}
+#alertDiv .confirmBtn{/* float:left; *//* width:50%; */font-size: 16px;text-align: center;padding: 10px 30px;color: #fff;display: inline-block;margin: 10px;background: #1c95eb;border-radius: 5px;}
+#alertDiv .cancelBtn{/* float:left; *//* width:50%; */font-size: 16px;text-align: center;padding: 10px 30px;color: #fff;display: inline-block;margin: 10px;    background: #1c95eb;    border-radius: 5px;}
+#messageDiv{z-index: 100;position: fixed;left: 50%;margin-left: -135px;top: 50%;margin-top: -32px;padding: 0 20px;width: 230px;height: 65px;background-color: rgba(0, 0, 0, 0.7);border-radius: 12px;}
+#messageDiv{color: #fff;font-size: 26px;line-height: 65px;text-align: center;}
+#leslie-share-container{background: rgba(0,0,0,.7) url("http://www.yuwangtianxia.com:9099/ywtx/impage/res/share_alert.png") no-repeat;	position: fixed;	top: 0px;	left: 0px;	width: 100%;	height: 100%;background-size: 100% 100%;}
+#alertDiv .alertTitle{
+	 display: none;
+}
+#alertDiv .alertContent{
+	background: #1c95eb url("/ywtx/impage/res/img/dialoglogo.jpg") no-repeat 5% center;
+	background-size: 30%;
+	padding: 20px;
+	font-size: 16px;
+	color: #fff;
+	min-height: 150px;
+	box-sizing: border-box;
+	padding-left: 35%;
+	text-align: left;
+	word-break: break-all;
+}
+#alertDiv .alertClose{
+	position: absolute;
+	background: url("/ywtx/impage/res/img/times.png") no-repeat center center;
+	width: 40px;
+	height: 40px;
+	background-size: 100% 100%;
+	right: -10px;
+	top: -20px;
+}

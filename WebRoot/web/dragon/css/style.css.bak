@@ -1,0 +1,314 @@
+@CHARSET "UTF-8";
+body,html{
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+}
+body{
+	background-color: #D2F392;
+}
+img{
+	display: block;
+}
+*{
+	font-family: "微软雅黑" ;
+}
+a{
+	color:#000;
+}
+a:active{
+	color:#000;
+	text-decoration: none;
+}
+a:hover{
+	color:crimson;
+	text-decoration: none;
+}
+.crimson{
+	color: crimson;
+}
+.green{
+	color: green;
+}
+.clear{
+	 background: none;
+	 border: 0;
+	 clear: both;
+	 display: block;
+	 float: none;
+	 font-size: 0;
+	 margin: 0;
+	 padding: 0;
+	 overflow: hidden;
+	 visibility: hidden;
+	 width: 0;
+	 height: 0;
+}
+.navi button{
+    width: 100%;
+    background: #C6E515;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 20px 0;
+    outline: none;
+}
+.navi button.active{
+	background: #F7B52C;	
+}
+#login .img1{
+	margin-bottom: 20px;
+}
+#login .p1{
+	background: #C6E515;
+	text-align: center;
+}
+#login .p2{
+	background: #DAF17F;
+	text-align: center;
+}
+#enter .btn-default{
+	background: #C6E515;
+}
+#activity.d1 .table tr:first-child td{
+	border-top:0;
+}
+#activity.d1{
+	background: #DAF17F;
+}
+#list .b1{
+	width: 100%;
+	text-align: center;
+	background: #C6E515;
+	padding: 10px;
+	border-radius:4px;
+	border:none;
+}
+#activity.d1 .table{
+	text-align: center;
+}
+.dynamic-head{
+	background: #DAF17F !important;
+}
+.dynamic-body{
+	background: #DAF17F !important;
+}
+.dynamic-head .close{
+	font-size: 16px;
+	font-weight: normal;
+	vertical-align: middle;
+}
+.dynamic-body .image{
+	width: 100px;
+		
+}
+.dynamic-body ul a{
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#enter .pop-image{
+	width: 100%;
+	height: 100px;
+	background-size: cover;
+    background-color: #888888;
+    border-radius:4px;
+    margin-bottom: 5px;
+}
+#enter .pop-container{
+	background: #fff;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+#enter p{
+	font-size: 14px;
+	line-height: 1;
+}
+.rank-head{
+	text-align: center;
+	background: #DAF17F !important;
+}
+.rank-body{
+	background: #DAF17F !important;
+}
+.rank-body li{
+	font-size: 14px;
+	line-height: 1.5
+}
+.rank-body .close{
+	font-size: 16px;
+	font-weight: normal;
+	vertical-align: middle;
+}
+hl{
+	border-top: 1px dotted  #CCC;
+	width: 100%;
+	display: block;
+	margin-bottom: 10px;
+}
+#code .panel-body{
+	text-align: center;
+	background: #DAF17F !important;
+}
+#code .code-image{
+	margin: 10px 0 0 0 ;
+}
+.footer-p1{
+	font-size: 14px;
+	line-height: 1.5;
+	text-align: center;
+}
+#role_notic .d1{
+    width: 100%;
+    height: 558px;
+    background-color: #DAF17F !important;
+    border-radius: 4px;
+    padding: 20px;
+    overflow: auto;
+}
+#list .d1-container{
+	text-align: center;
+	margin: 10px 0;
+}
+#list .b2{
+	background-color: #DAF17F !important;
+}
+#list .pop-container{
+	padding: 10px;
+	background: #fff;
+	position: relative;
+	margin-bottom: 10px;
+}
+#list .pop-image{
+	width: 100%;
+	height: 100px;
+	background-size: cover;
+    background-color: #888888;
+    border-radius:4px;
+    margin-bottom: 5px;
+}
+#list .pop-container p{
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#list .pop-container .b3{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	font-size: 14px;
+	background: #DAF17F;
+	border: none;
+	border-radius:5px;
+	padding: 5px;
+}
+#register .d1{
+    width: 100%;
+    background-color: #DAF17F !important;
+    border-radius: 4px;
+    padding: 20px;
+    overflow: hidden;
+}
+#register .form-container{
+	background: #fff;
+	text-align: center;
+	padding: 20px;
+}
+#register .b1{
+    width: 100%;
+    background: #C6E515;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 20px 0;
+    outline: none;
+}
+#register .b1:disabled{
+    background: #888888;
+    color: #fff;
+}
+#upload .upload-container{
+	width: 100%;
+	height: 554px;
+	background: #DAF17F;
+	padding: 20px;
+}
+#upload .dd1{
+	width: 100%;
+	background: #fff;
+	padding: 20px;
+	border: 1px solid #DEDEDE;
+	border-radius:5px;
+}
+#upload .dd2{
+	width: 100%;
+    height: 486px;
+	background: #fff;
+	padding: 20px;
+	border: 1px solid #DEDEDE;
+	border-radius:5px;
+}
+#upload .image{
+	width: 100%;
+	height: 200px;
+    border: 1px solid #888888;
+    border-radius: 5px;
+    background: #fff url("/activity/wx/dragon/img/icon2.jpg") no-repeat center center;
+    display: block;
+    vertical-align: top;
+}
+#upload .b1{
+    width: 100%;
+    background: #C6E515;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 20px 0;
+    outline: none;
+}
+#upload .b1:disabled{
+    background: #888888;
+    color: #fff;
+}
+#upload .bang-image{
+	display: block;
+	margin: 0px auto;
+}
+#upload .bang-container{
+	position: relative;
+	top:-40px;
+}
+.help-block{
+	font-size: 14px;
+}
+.modal-load{
+	width: 300px;
+}
+.alert-load{
+	background: #80BD34 !important;
+}
+.modal-footer .btn-primary{
+	background: #80BD34 !important;
+	border-color: #80BD34 !important;
+} 
+#rank .table-deafult{
+	width: 100%;
+	font-size: 14px;
+	margin: 10px 0; 
+}
+.pagination{
+	margin: 0px ;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	border-color: #80BD34 !important;
+	background: #80BD34 !important;
+	color: #fff !important;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+	color: #80BD34 !important;
+}
+.pagination>li>a, .pagination>li>span{
+	color:#80BD34;
+}

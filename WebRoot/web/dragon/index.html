@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html >
+  <head>
+    <title>龙牡杯</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" href="/activity/res/bootstrap-3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/activity/res/Font-Awesome-3.2.1/css/font-awesome.css">
+	<link rel="stylesheet" href="css/style.css" type="text/css"></link>
+  </head>
+  <body>
+  	<div class="container">
+  		<img alt="" src="img/icon0.jpg" width="100%">
+  		<div class="row navi">
+  			<div class="col-md-2 col-sm-2"><button ui-sref="enter" ui-sref-active="active">首页</button></div>
+  			<div class="col-md-2 col-sm-2"><button ui-sref="role" ui-sref-active="active">活动规则</button></div>
+  			<div class="col-md-2 col-sm-2"><button ui-sref="notice" ui-sref-active="active">活动公告</button></div>
+  			<div class="col-md-2 col-sm-2"><button ui-sref="list" ui-sref-active="active">作品展示</button></div>
+  			<div class="col-md-2 col-sm-2"><button ui-sref="rank" ui-sref-active="active">排行榜</button></div>
+  			<div class="col-md-2 col-sm-2"><button ng-click="open('http://bg.whjm.com/')">健民集团</button></div>
+  		</div>
+	  	<ui-view name="main"></ui-view>
+	  	<p class="footer-p1">主办单位：《21世纪药店》报、中国药店管理学院</p>
+		<p class="footer-p1">承办单位：健民药业集团股份有限公司</p>
+		<p class="footer-p1">协办单位：标点培训、中国药店管理学院各省级分院、北京创意手文化有限公司</p>
+  	</div>
+    <script type="text/javascript" data-main="js/main.js" src="/activity/res/framework/require/require.js"></script>
+    <style type="text/css">
+		*{
+			font-family: microsoft yahei;
+		}
+	</style>
+	 <script>
+	    //optional need to be loaded before angular-file-upload-shim(.min).js
+	    FileAPI = {
+	        jsUrl: 'framework/FileAPI.min.js',
+	        flashUrl: 'framework/FileAPI.flash.swf',
+	        //forceLoad: true, html5: false //to debug flash in HTML5 browsers
+	        //noContentTimeout: 10000 (see #528)
+	    };
+	</script>
+    <script type="text/javascript" src="/activity/res/framework/ng-file-upload-shim.js"></script>
+  </body>
+</html>

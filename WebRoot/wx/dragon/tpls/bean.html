@@ -1,0 +1,33 @@
+﻿<ion-content ng-controller="beanController">
+	<div id="bean" >
+			<img src="img/icon1.jpg" width="100%"/>
+			<div class="container">
+					<table>
+						<tr>
+							<td width="80px">编&emsp;号：</td>
+							<td >{{image.id+1000}}</td>
+						</tr>
+						<tr>
+							<td width="80px">票&emsp;数：</td>
+							<td >{{user.votes}}</td>
+						</tr>
+						<tr>
+							<td width="80px">作者名：</td>
+							<td >{{user.username}}</td>
+						</tr>
+						<tr>
+							<td width="80px">作品名：</td>
+							<td >{{image.title}}</td>
+						</tr>
+						<tr>
+							<td width="">作&emsp;品：</td>
+							<td >
+								<img width="100%" ng-src="{{image.imageurl}}" ng-click="show(image.imageurl)"/>
+							</td>
+						</tr>
+					</table> 
+					<button type="submit" class="btn" ng-click="vote(user.id,user.username,user)">投他一票</button>
+					<button type="button" class="btn" ui-sref="list">返&emsp;回</button>
+			</div>
+	</div>
+</ion-content>

@@ -1,0 +1,99 @@
+<%@page import="com.activity.Utils.JSHelper"%>
+<%@page import="com.activity.tencent.Entity.RedPack"%>
+<%@page import="com.activity.DAO.ActRedpackDAO"%>
+<%@page import="com.activity.DAO.ActRedpack"%>
+<%@page import="com.activity.DAO.ActUserDAO"%>
+<%@page import="com.activity.DAO.ActUser"%>
+<%@page import="com.activity.DAO.ActVotesDAO"%>
+<%@page import="com.activity.DAO.ActVotes"%>
+<%@page import="com.activity.DAO.ActBangDAO"%>
+<%@page import="com.activity.DAO.ActBang"%>
+<%@page import="com.activity.Utils.thumbnailUtil"%>
+<%@page import="com.activity.DAO.ActImageDAO"%>
+<%@page import="com.activity.DAO.ActImage"%>
+<%@page import="com.activity.tencent.Utils.TencentApi"%>
+<%@page import="com.activity.tencent.Utils.TencentApiFactory"%>
+<%@page import="net.sf.json.JSONObject"%>
+<%@ page language="java"
+	import="java.util.*,java.io.*"
+	pageEncoding="UTF-8"%><%
+	JSONObject msg = new JSONObject();
+	msg.put("state", 200);
+	String userid = request.getParameter("userid");
+	String username = request.getParameter("username");
+	String phone = request.getParameter("phone");
+	String openid = request.getParameter("openid");
+	String code = request.getParameter("code");
+	if(JSHelper.ImgValid("code",request)){
+		String access_token = request.getParameter("access_token");
+		TencentApi api =  TencentApiFactory.getInstance(TencentApiFactory.DXTSERVICE);
+		JSONObject j1 = api.auhtToken(access_token, openid);
+		try{
+			if("ok".equals(j1.getString("errmsg"))){
+				ActBangDAO d1 = new ActBangDAO();
+				List l = d1.findByUserid(Integer.valueOf(userid));
+				if(!l.isEmpty()){
+					ActRedpack b = new ActRedpack();
+					ActRedpackDAO d = new ActRedpackDAO();
+					//l = d.findByUserid(Integer.valueOf(userid));
+					l = d.search(1, 1, "  and (openid = '"+openid+"' or phone = '"+phone+"' or userid = "+userid+")  and state =1 ");
+					if(l.isEmpty()){
+						int i = new Random().nextInt(50)+100;
+						b.setCreatedate(new Date());
+						b.setOpenid(openid);
+						b.setPhone(phone);
+						b.setPrize(String.valueOf(i));
+						b.setState(0);
+						b.setUserid(Integer.valueOf(userid));
+						b.setUsername(username);
+						b.setCreatedate(new Date());
+						try{
+							d.save(b);
+							RedPack redPack = new RedPack();
+							redPack.setAct_name("“龙牡杯”POP创意大赛");
+							redPack.setClient_ip("183.63.90.182");
+							redPack.setMch_billno(String.valueOf(b.getId()));
+							redPack.setRemark("感谢您的参与！点击消息拆开红包即可获得现金。");
+							redPack.setSend_name("21世纪药店");
+							redPack.setWishing("龙牡杯");
+							redPack.setTotal_num(1);
+							redPack.setTotal_amount(i);
+							String a = api.sendRedPack(redPack, openid);
+							JSONObject rs = new JSONObject().fromObject(a).getJSONObject("xml");
+							if("SUCCESS".equals(rs.getString("result_code"))){
+								b.setBillno(a);
+								b.setState(1);
+								d.attachDirty(b);
+								msg.put("amount", (double)i/100);
+							}else{
+								b.setBillno(a);
+								d.attachDirty(b);
+							}
+						}catch(Exception e){
+							e.printStackTrace();
+							msg.put("state", 402);
+							msg.put("msg", "抽检失败");
+						}
+					}else{
+						msg.put("state", 401);
+						msg.put("msg", "已参与抽奖");
+					}
+				}else{
+					msg.put("state", 400);
+					msg.put("msg", "请先制作龙牧体");
+				}
+			}else{
+				msg.put("state", 500);
+				msg.put("msg", "非法token");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			msg.put("exception", e.getClass().getName());
+		}
+	}else{
+		msg.put("state", 403);
+		msg.put("msg", "验证码错误");
+	}
+	System.out.println(msg);
+%>
+<%=msg.toString()%>

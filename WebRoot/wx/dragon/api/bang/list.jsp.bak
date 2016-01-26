@@ -1,0 +1,18 @@
+<%@page import="com.activity.DAO.ActBangDAO"%>
+<%@page import="com.activity.DAO.ActBang"%>
+<%@page import="com.activity.Utils.thumbnailUtil"%>
+<%@page import="com.activity.DAO.ActImageDAO"%>
+<%@page import="com.activity.DAO.ActImage"%>
+<%@page import="com.activity.tencent.Utils.TencentApi"%>
+<%@page import="com.activity.tencent.Utils.TencentApiFactory"%>
+<%@page import="net.sf.json.JSONObject"%>
+<%@ page language="java"
+	import="java.util.*,java.io.*"
+	pageEncoding="UTF-8"%><%
+	JSONObject msg = new JSONObject();
+	msg.put("state", 200);
+	ActBangDAO d = new ActBangDAO();
+	List l = d.search(1, 20," order by rand()");
+	msg.put("list", l);
+%>
+<%=msg.toString()%>

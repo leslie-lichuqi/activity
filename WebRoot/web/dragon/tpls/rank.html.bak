@@ -1,0 +1,43 @@
+<div class="row" id="list" ng-controller="rankController">
+	<div class="col-md-9  col-sm-9">
+		<h3>排行榜</h3>
+		<hl></hl>
+		<div class="row" style="min-height: 570px;">
+			<div class="col-md-3" ng-repeat="bean in list">
+	  			<div class="pop-container">
+	  				<div class="pop-image" ui-sref="bean({'id':bean.id})" style="background-image: url('{{bean.imageurl}}')"></div>
+	  				<p>编号：{{bean.id+1000}}</p>
+					<p>作品名：{{bean.title}}</p>
+					<p>作&emsp;者：{{bean.username}}</p>
+					<p>得票数：{{bean.votes}}</p>
+					<p>排&emsp;名：{{bean.rank}}</p>
+					<button class="b3" ng-click="vote(bean.userid,bean.username,bean)">投票</button>
+	  			</div>
+	  		</div>
+		</div>
+		<div class="row">
+				<div class="col-md-12" style="text-align: center;">
+					<pagination ng-change="pageChanged()" total-items="pagination.bigTotalItems" 
+					ng-model="pagination.bigCurrentPage" max-size="pagination.maxSize" 
+					class="pagination-feature pagination-sm" boundary-links="true" num-pages="pagination.numPages"></pagination>
+				</div>
+				 <!-- <div class="col-md-2">
+				  	<div class="input-group input-group-sm">
+				  	  <span class="input-group-addon">到</span>
+				      <input type="text" class="form-control" placeholder="" >
+				      <span class="input-group-btn">
+				        <button class="btn btn-default btn-primary" type="button" ng-click="setPage(3)">页</button>
+				      </span>
+				    </div>
+				  </div>
+				  <div class="col-md-2">
+				  	<p class="text-muted p-feature">页码: {{pagination.bigCurrentPage}} / {{pagination.numPages}}</p>
+				  </div> -->
+  		</div>
+	</div>
+	<div class="col-md-3 col-sm-3">
+		<ui-view name="login"></ui-view>
+		<ui-view name="rank"></ui-view>
+		<ui-view name="code"></ui-view>
+	</div>
+</div>

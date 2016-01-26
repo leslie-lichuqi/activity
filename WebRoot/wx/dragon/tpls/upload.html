@@ -1,0 +1,35 @@
+<div id="upload" ng-controller="uploadController">
+		<img src="img/icon1.jpg" width="100%"/>
+		<div class="container">
+			<form name="myFrom" class="myform" ng-submit="save()">
+				<p class="title">上传作品</p>
+				<div class="i1-container">
+					<label>作品名：</label><input type="text"  id="title" class="i1" placeholder="请填写您的作品名"  ng-disabled="isUpload"	ng-model="image.title" required> 
+				</div>
+				<div class="t i1-container flex1">
+					<label>作&emsp;品：</label>
+					<div id="imgContainer">
+						<div id="img" class="image" ng-click="chooseImage()"  ng-show="!image.imageurl" ></div>
+						<img id="img" style="width: 50%" ng-show="image.imageurl"  ng-src="{{image.imageurl}}"  ng-click="open(image.imageurl)"/> 
+					</div>
+				</div>
+				
+				<!-- <table>
+					<tr>
+						<td width="80px">作品名：</td>
+						<td ><input type="text"  id="title" class="i1" placeholder="请填写您的作品名"  ng-disabled="isUpload"	ng-model="image.title" required> </td>
+					</tr>
+					<tr class="t">
+						<td width="">作&emsp;品：</td>
+						<td id="imgContainer">
+							<div id="img" class="image" ng-click="chooseImage()"  ng-show="!image.imageurl" ></div>
+							<img id="img" style="height: 200px"  ng-show="image.imageurl"  ng-src="{{image.imageurl}}"/>
+						</td>
+					</tr>
+				</table> -->
+				<button type="submit" class="btn"  ng-disabled="myFrom.$invalid||image.imageurl==''" ng-show="!isUpload">上&emsp;传</button>
+				<button type="submit" class="btn"  ng-show="isUpload" ui-sref="enter">返&emsp;回</button>
+			</form>
+		</div>
+	
+</div>

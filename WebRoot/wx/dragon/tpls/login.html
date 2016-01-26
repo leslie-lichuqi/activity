@@ -1,0 +1,31 @@
+<ion-content ng-controller="loginController">
+<div id="login">
+	<img src="img/icon1.jpg" width="100%"/>
+	<form  name="myForm" ng-submit="login()">
+		<div class="container">
+			<table class="mytable">
+				<tr>
+					<td width="50px">昵称：</td>
+					<td><input type="text" class="input-default" placeholder="登录名称"  ng-model="user.username"/></td>
+				</tr>
+				<tr>
+					<td >密码：</td>
+					<td><input type="password" class="input-default" placeholder="请输入密码"  ng-model="user.password"/></td>
+				</tr>
+				<tr>
+					<td >验证：</td>
+					<td>
+						<img alt="" src="/activity/servlet/ImgValidHandler?t={{t}}"  width="50%" class="img1" ng-click="changeValidCode()">
+						<input type="text" class="input-default i" ng-model="vil.code" placeholder="输入4位验证码"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;"><a class="a1" ui-sref="register">点击注册</a></td>
+				</tr>
+			</table>
+			<button class="b2" type="submit">确&emsp;定</button>
+			<button class="b2" ui-sref="enter">返&emsp;回</button>
+		</div>
+	</form>
+</div>
+</ion-content>

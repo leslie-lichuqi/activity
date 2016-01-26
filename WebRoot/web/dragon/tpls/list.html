@@ -1,0 +1,75 @@
+<div class="row" id="list" ng-controller="listController">
+	<div class="col-md-9  col-sm-9">
+		<h3>作品展示</h3>
+		<hl></hl>
+		<div class="row">
+			<div class="col-md-2 col-sm-2">
+				<button class="b1" ui-sref="list({'zone':'东北赛区'})" ui-sref-active="active">东北赛区</button>
+			</div>
+			<div class="col-md-2 col-sm-2">
+				<button class="b1" ui-sref="list({'zone':'华东赛区'})" ui-sref-active="active">华东赛区</button>
+			</div>
+			<div class="col-md-2 col-sm-2">
+				<button class="b1" ui-sref="list({'zone':'华中赛区'})" ui-sref-active="active">华中赛区</button>
+			</div>
+			<div class="col-md-2 col-sm-2">
+				<button class="b1" ui-sref="list({'zone':'华南赛区'})" ui-sref-active="active">华南赛区</button>
+			</div>
+			<div class="col-md-2 col-sm-2">
+				<button class="b1" ui-sref="list({'zone':'西南赛区'})" ui-sref-active="active">西南赛区</button>
+			</div>
+			<div class="col-md-2 col-sm-2">
+				<button class="b1" ui-sref="list({'zone':'西北赛区'})" ui-sref-active="active">西北赛区</button>
+			</div>
+		</div>
+		<div class="d1-container">
+			<div class="row">
+				<div class="col-sm-12">
+					<form class="form-inline" name="myForm"  ng-submit="search()">
+					  <div class="form-group">
+					    <input type="text" class="form-control" id="" placeholder="输入作品名或作者名或编号查找" ng-model="option.name">
+					  </div>
+					  <button type="submit" class="btn btn-default b2">搜  索</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="min-height: 570px;">
+			<div class="col-md-3" ng-repeat="bean in list">
+	  			<div class="pop-container">
+	  				<div class="pop-image" ng-click="showBean(bean.id)" style="background-image: url('{{bean.imageurl}}')"></div>
+	  				<p>编号：{{bean.id+1000}}</p>
+					<p>作品名：{{bean.title}}</p>
+					<p>作&emsp;者：{{bean.username}}</p>
+					<p>得票数：{{bean.votes}}</p>
+					<p>排&emsp;名：{{bean.rank}}</p>
+					<button class="b3" ng-click="modal()">投票</button>
+	  			</div>
+	  		</div>
+		</div>
+		<div class="row">
+				<div class="col-md-12" style="text-align: center;">
+					<pagination ng-change="pageChanged()" total-items="pagination.bigTotalItems" 
+					ng-model="pagination.bigCurrentPage" max-size="pagination.maxSize" 
+					class="pagination-feature pagination-sm" boundary-links="true" num-pages="pagination.numPages"></pagination>
+				</div>
+				 <!-- <div class="col-md-2">
+				  	<div class="input-group input-group-sm">
+				  	  <span class="input-group-addon">到</span>
+				      <input type="text" class="form-control" placeholder="" >
+				      <span class="input-group-btn">
+				        <button class="btn btn-default btn-primary" type="button" ng-click="setPage(3)">页</button>
+				      </span>
+				    </div>
+				  </div>
+				  <div class="col-md-2">
+				  	<p class="text-muted p-feature">页码: {{pagination.bigCurrentPage}} / {{pagination.numPages}}</p>
+				  </div> -->
+  		</div>
+	</div>
+	<div class="col-md-3 col-sm-3">
+		<ui-view name="login"></ui-view>
+		<ui-view name="rank"></ui-view>
+		<ui-view name="code"></ui-view>
+	</div>
+</div>

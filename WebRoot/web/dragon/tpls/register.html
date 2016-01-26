@@ -1,0 +1,113 @@
+<div class="row" id="register" ng-controller="regController">
+	<div class="col-md-9 col-sm-9">
+		<div class="d1">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="form-container">
+						<form name="myForm" class="form-horizontal" ng-submit="save()"  novalidate="novalidate">
+							<div class="form-group" >
+								<label class="radio-inline" >
+								  <input type="radio" name="isStaff" id="isStaff" ng-model="user.isStaff"  value="1" required>药店从业人员
+								</label>
+								<label class="radio-inline" ng-class="{'has-success':myForm.isStaff.$valid}">
+								  <input type="radio" name="isStaff" id="isStaff" ng-model="user.isStaff"  value="0" required>非药店从业人员
+								</label>
+							</div>
+							<div class="form-group " ng-class="{'has-success':myForm.username.$dirty && isUser&&myForm.username.$valid}">
+							    <label for="username" class="col-sm-3 control-label">昵称：</label>
+							    <div class="col-sm-9">
+							    	<input type="text" id="username" name="username" class="form-control" placeholder="登录名称"  ng-model="user.username" required ng-minlength="3" ng-minlength="10" ng-pattern="/^[A-Za-z]{3,10}$/"/>
+							    	<p class="help-block crimson" ng-show="myForm.username.$dirty && myForm.username.$invalid">请输入3到10位英文登录名</p>
+									<p class="help-block crimson" ng-show="myForm.username.$dirty && !isUser&&myForm.username.$valid">登录名已被占用</p>
+							    </div>
+							    
+						    </div>
+						    <div class="form-group" ng-class="{'has-success':myForm.password.$valid}">
+							    <label for="password" class="col-sm-3 control-label">密码：</label>
+							    <div class="col-sm-9">
+							    	<input type="password" name="password" id="password" name="password" class="form-control" placeholder="请输入密码"  ng-model="user.password"  required ng-minlength="6" ng-minlength="15"/>
+							    	<p class="help-block crimson" ng-show="myForm.password.$dirty && myForm.password.$invalid">请输入6到15位密码</p>
+							    </div>
+						    </div>
+						     <div class="form-group" ng-class="{'has-success':myForm.password.$valid&&psCheck}">
+							    <label for="repassword" class="col-sm-3 control-label"></label>
+							    <div class="col-sm-9">
+							    	<input type="password" name="repassword" id="repassword"  class="form-control" placeholder="请输入密码"  ng-model="user.repassword"  required ng-minlength="6" ng-minlength="15"/>
+							    	<p class="help-block crimson" ng-show="myForm.repassword.$dirty && myForm.repassword.$invalid">请输入6到15位密码</p>
+									<p class="help-block crimson" ng-show="myForm.repassword.$dirty && myForm.repassword.$valid&&!psCheck">两次输入不相同</p>
+							    </div>
+						    </div>
+						    <div class="form-group" ng-class="{'has-success':myForm.realname.$valid}">
+							    <label for="password" class="col-sm-3 control-label">姓名：</label>
+							    <div class="col-sm-9">
+							    	<input type="text" class="form-control" name="realname"  placeholder="请填写您的真实姓名"  ng-model="user.realname" required ng-minlength="2" ng-minlength="5"  ng-pattern="/^[\u4E00-\u9FA5]{2,5}$/"/>
+							    	<p class="help-block crimson" ng-show="myForm.realname.$dirty && myForm.realname.$invalid">请输入正确真实姓名</p>
+							    </div>
+						    </div>
+						     <div class="form-group" ng-class="{'has-success':myForm.phone.$valid}">
+							    <label for="password" class="col-sm-3 control-label">手机：</label>
+							    <div class="col-sm-9">
+							    	<input type="text" class="form-control" placeholder="请正确填写手机号码以便赛事联系"  name="phone" ng-model="user.phone" required ng-minlength="11" ng-maxlength="11"/>
+							    	<p class="help-block crimson" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">请输入11位手机号码</p>
+							    </div>
+						    </div>
+						     <div class="form-group" ng-class="{'has-success':myForm.province.$valid,'has-wran':myForm.province.$invalid}">
+							    <label for="password" class="col-sm-3 control-label">省份：</label>
+							    <div class="col-sm-9">
+							    	<select class="form-control"  name="province"    ng-model="user.province"  ng-options="value.name as value.name for value in myOptions"  required>
+										<option value="">--请选择--</option>
+									</select>
+							    </div>
+						    </div>
+						    <div class="form-group" ng-show="user.isStaff">
+							    <label for="password" class="col-sm-3 control-label">单位：</label>
+							    <div class="col-sm-9">
+							    	<input type="text"  name="company"  class="form-control" placeholder="药店从业人员填写"  ng-model="user.company" />
+							    </div>
+						    </div>
+						    <div class="form-group" ng-class="{'has-success':myForm.address.$valid}">
+							    <label for="password" class="col-sm-3 control-label">地址：</label>
+							    <div class="col-sm-9">
+							    	<input type="text"  class="form-control"   name="address"  placeholder="详细填写地址以便邮寄礼品"  ng-model="user.address" required ng-pattern="/^[\u4e00-\u9fa5]{0,}[省]{1}[\u4e00-\u9fa5]{0,}[市]{1}[\u4e00-\u9fa5]{0,}[区]{1}[\u4e00-\u9fa5A-Za-z0-9_]{1,}$/"/>
+							    	<p class="help-block crimson" ng-show="myForm.address.$dirty && myForm.address.$invalid">请输入xx省xx市xx区xx格式的地址以便邮寄礼品</p>
+							    </div>
+						    </div>
+						    <div class="form-group" ng-class="{'has-success':myForm.zipcode.$valid}">
+							    <label for="password" class="col-sm-3 control-label">邮编：</label>
+							    <div class="col-sm-9">
+							    	<input type="text"  class="form-control"  name="zipcode"   placeholder="请正码填写邮政编码"  ng-model="user.zipcode" required/>
+							    </div>
+						    </div>
+						    <div class="form-group" ng-class="{'has-success':myForm.code.$valid}">
+							    <label for="password" class="col-sm-3 control-label">验证：</label>
+							    <div class="col-sm-4">
+							    	<img alt="" src="/activity/servlet/ImgValidHandler?t={{t}}" width="100%" height="" class="img1" ng-click="changeValidCode()">
+							    </div>
+							    <div class="col-sm-4">
+									<input type="text"   name="code" required="required"   class="form-control i"  placeholder="输入4位验证码"  ng-model="vil.code" ng-class="{true:'green',false:'crimson'}[myForm.code.$valid]"/>
+							    </div>
+						    </div>
+						    <div class="form-group" ng-class="{'has-success':myForm.isReader.$valid}">
+							    <label class="radio-inline">
+								  <input type="checkbox" name="isReader" id="isReader"  ng-model="vil.isReader"  value="true" required>已详细阅读活动介绍事项
+								</label>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-4 col-sm-4">
+							    	 <button class="b1" type="submit"  ng-disabled="myForm.$invalid">提&emsp;交</button>
+							    </div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="col-md-3 col-sm-3">
+		<ui-view name="rank"></ui-view>
+		<ui-view name="code"></ui-view>
+	</div>
+
+
+</div>

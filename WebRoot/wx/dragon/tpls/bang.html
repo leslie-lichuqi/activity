@@ -1,0 +1,47 @@
+<ion-content>
+	<div id="bang" ng-controller="bangController">
+		<!-- <div class="adver"></div> -->
+		<img src="img/icon3.jpg" width="100%">
+		<p class="p1">发挥你的创意，每月还将评选10个优秀龙牡体，好礼等你来！</p>
+		<form name="myFrom" ng-submit="save()">
+			<div class="container">
+				<div>太BANG了！</div>
+				<input class="input-default" ng-model="option.val1" type="text"
+					placeholder="你是中国的好男人，公认的国民老公！" required ng-minlength="4" ng-pattern="/^[\u4E00-\u9FA5]{4,}$/"/>；
+				<p>会做到的！</p>
+				<div>但你首先要</div>
+				<input class="input-default" ng-model="option.val2" type="text"
+					placeholder="把我网上购物车里的订单全付了哦！"  required ng-minlength="4" ng-pattern="/^[\u4E00-\u9FA5]{4,}$/"/>
+			</div>
+			<p class="p1">请填写4个汉字以上的信息</p> 
+			<div class="btn-container">
+				<div ng-show="!ispassed">
+					<button type="submit" ng-disabled="myFrom.$invalid">确&emsp;定</button>
+				</div>
+				<div ng-show="ispassed">
+					<button type="button" ui-sref="enter">您已参与过，谢谢！</button>
+				</div>
+			</div>
+		</form>
+		<marquee class="lmt-container" direction="up">
+			<!-- <p ng-repeat="bean in list">{{bean.bang}}</p> -->
+			<p>	太BANG了！中国好男人；会做到的，但你首先要网购款付了吧	</p>
+			<p>	太BANG了！你是国家的栋梁；会做到的，但你首先要把这本书背完	</p>
+			<p>	太BANG了！你是好女人；会做到的，但你首先要努力奋斗	</p>
+			<p>	太BANG了！我是小鲜肉；会做到的，但你首先要好好健身	</p>
+			<p>	太BANG了！你是中国好男人；会做到的，但你首先要把购物车上的款全付了	</p>
+			<p>	太BANG了！您是中国好男人；会做到的，但你首先要把家里的家务全做了	</p>
+			<p>	太BANG了！你是中国好司机；会做到的，但你首先要拿到驾照	</p>
+			<p>	太BANG了！牛晓敏向我示爱了；会做到的，但你首先要买个三室两厅的房间给她	</p>
+			<p>	太BANG了！你竟让我待你理财；会做到的，但你首先要学点理财知识	</p>
+			<p>	太BANG了！你们是最棒的；会做到的，但你首先要要努力工作	</p>
+			<p>	太BANG了！我是中国人；会做到的，但你首先要我是中国人	</p>
+			<p>	太BANG了！你是中国最给力的男人；会做到的，但你首先要把我养的白白胖胖	</p>
+			<p>	太BANG了！我要抢红包；会做到的，但你首先要钱包有钱	</p>
+			<p>	太BANG了！你是中国的好男人公认的国民老公；会做到的，但你首先要把我网上购物车的订单全部付了哦	</p>
+			<p>	太BANG了！你是中国的三好男人；会做到的，但你首先要手机给我换了	</p>
+			<p>	太BANG了！你是未来的世界球王；会做到的，但你首先要学会踢球	</p>
+			<p>	太BANG了！你是中国的贝克汉姆；会做到的，但你首先要认清对方的球门	</p>
+		</marquee>
+	</div>
+</ion-content>

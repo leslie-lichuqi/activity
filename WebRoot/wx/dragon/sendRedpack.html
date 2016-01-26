@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html ng-app="app">
+  <head>
+    <title>龙牡杯</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<!-- <meta name="viewport" content="width=device-width,user-scalable=no" /> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta http-equiv="expires" content="0">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="expires" content="-1">
+	<meta charset="utf-8"/>
+  </head>
+  <body ng-controller="redpackController">
+	<form ng-submit="save()">
+		id:<input class="" ng-model="id" value="" required>
+		<button type="submit">提交</button>
+	</form>
+	<p >{{msg}}</p>
+	<script type="text/javascript" src="/activity/res/framework/angular-1.4.3/angular.min.js"></script>
+	<script type="text/javascript">
+	console.log(angular);
+		angular.module("app",[])
+		.controller("redpackController",["$scope","$http",function($scope,$http){
+			$scope.id ;
+			$scope.msg;
+			$scope.save = function(){
+				$scope.msg ="正在提交请稍等...."
+				$http({
+					method:"GET",
+					url:"api/lottery/sendRedpack.jsp",
+					params:{
+						id:$scope.id
+					}
+				})
+				.success(function(data){
+					$scope.msg =data.msg;
+				})
+			}
+		}])
+		
+	</script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<ion-content ng-controller="regController">
+<div id="register">
+	<img src="img/icon1.jpg" width="100%"/>
+		<form name="myForm" ng-submit="save()"  novalidate="novalidate">
+		<div class="container" >
+			<div class="d1">
+				<input type="radio" class="r1" id="r1" name="m" ng-model="user.isStaff"  value="1"><label for="r1">药店从业人员</label>
+			</div>
+			<div class="d1">
+				<input type="radio" class="r1" id="r2"  name="m" ng-model="user.isStaff" value="0"><label for="r2">非药店从业人员</label>
+			</div>
+			<table class="mytable">
+				<tr>
+					<td width="50px"><span class="crimson">*</span>昵称：</td>
+					<td>
+						<input type="text" name="username" class="input-default" placeholder="登录名称"  ng-model="user.username" required ng-minlength="3" ng-minlength="10"/>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td >
+						<p class="crimson" ng-show="myForm.username.$dirty && myForm.username.$invalid">请输入3到10位登录名</p>
+						<p class="crimson" ng-show="myForm.username.$dirty && !isUser&&myForm.username.$valid">登录名已被占用</p>
+						<p class="green" ng-show="myForm.username.$dirty && isUser&&myForm.username.$valid">登录名可以使用</p>
+					</td>
+				</tr>
+				<tr>
+					<td ><span class="crimson">*</span>密码：</td>
+					<td><input type="password" name="password" class="input-default" placeholder="请输入密码"  ng-model="user.password"  required ng-minlength="6" ng-minlength="15"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td >
+						<p class="crimson" ng-show="myForm.password.$dirty && myForm.password.$invalid">请输入6到15位密码</p>
+					</td>
+				</tr>
+				<tr >
+					<td ></td>
+					<td><input type="password" name="repassword"  class="input-default" placeholder="请再次输入密码"  ng-model="user.repassword"  required ng-minlength="6" ng-minlength="15"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td >
+						<p class="crimson" ng-show="myForm.repassword.$dirty && myForm.repassword.$invalid">请输入6到15位密码</p>
+						<p class="crimson" ng-show="myForm.repassword.$dirty && myForm.repassword.$valid&&!psCheck">两次输入不相同</p>
+					</td>
+				</tr>
+				<tr style="border-top:1px dotted #888888;">
+					<td ><br/><span class="crimson">*</span>姓名：</td>
+					<td>
+						<br/>
+						<input type="text" class="input-default" name="realname"  placeholder="请填写您的真实姓名"  ng-model="user.realname" required ng-minlength="2" ng-minlength="5"  ng-pattern="/^[\u4E00-\u9FA5]{2,5}$/"/>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td >
+						<p class="crimson" ng-show="myForm.realname.$dirty && myForm.realname.$invalid">请输入正确真实姓名</p>
+					</td>
+				</tr>
+				<tr>
+					<td ><span class="crimson">*</span>手机：</td>
+					<td>
+						<input type="text" class="input-default" placeholder="请正确填写手机号码以便赛事联系"  name="phone" ng-model="user.phone" required ng-minlength="11" ng-maxlength="11"/>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td >
+						<p class="crimson" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">请输入11位手机号码</p>
+					</td>
+				</tr>
+				<tr>
+					<td ><span class="crimson">*</span>省份：</td>
+					<td>
+						<select class="s1"  name="province"    ng-model="user.province"  ng-options="value.name as value.name for value in myOptions"  required>
+							<option value="">--请选择--</option>
+						</select>
+						
+					</td>
+				</tr>
+				<tr ng-show="user.isStaff">
+					<td ><span class="crimson">*</span>单位：</td>
+					<td>
+						<input type="text"  name="company"  class="input-default" placeholder="药店从业人员填写"  ng-model="user.company" />
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td >
+						<p class="crimson" ng-show="myForm.company.$dirty && myForm.company.$invalid">请输入单位</p>
+					</td>
+				</tr>
+				<tr>
+					<td ><span class="crimson">*</span>地址：</td>
+					<td>
+						<input type="text"  class="input-default"   name="address"  placeholder="详细填写地址以便邮寄礼品"  ng-model="user.address" required ng-pattern="/^[\u4e00-\u9fa5]{0,}[省]{1}[\u4e00-\u9fa5]{0,}[市]{1}[\u4e00-\u9fa5]{0,}[区]{1}[\u4e00-\u9fa5A-Za-z0-9_]{1,}$/"/>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td >
+						<p class="crimson" ng-show="myForm.address.$dirty && myForm.address.$invalid">请输入xx省xx市xx区xx格式的地址以便邮寄礼品</p>
+					</td>
+				</tr>
+				<tr>
+					<td ><span class="crimson">*</span>邮编：</td>
+					<td>
+						<input type="text"  class="input-default"  name="zipcode"   placeholder="请正码填写邮政编码"  ng-model="user.zipcode" required/>
+					</td>
+				</tr>
+				<tr>
+					<td >验证：</td>
+					<td>
+						<img alt="" src="/activity/servlet/ImgValidHandler?t={{t}}" width="50%" class="img1" ng-click="changeValidCode()">
+						<input type="text"   name="code" required="required"   class="input-default i"  placeholder="输入4位验证码"  ng-model="vil.code" ng-class="{true:'green',false:'crimson'}[myForm.code.$valid]"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="checkbox"  name="isRead"  required class="r1"  id="r3"  name="m"  ng-model="vil.isReader"  value="true"><label for="r3">已详细阅读活动介绍事项</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center">
+						<p class="crimson" ng-show="myForm.isRead.$dirty && myForm.isRead.$invalid">请勾选阅读活动介绍事项</p>
+					</td>
+				</tr>
+			</table>
+		<button class="b1" type="submit"  ng-disabled="myForm.$invalid">提&emsp;交</button>
+		</div>
+	</form>
+</div>
+</ion-content>

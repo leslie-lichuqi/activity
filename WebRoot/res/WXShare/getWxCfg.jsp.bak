@@ -1,0 +1,23 @@
+<%@page import="com.tencent.Utils.TencentApiFactory"%>
+<%@page import="com.tencent.Utils.TencentApi"%>
+<%@page import="net.sf.json.JSONObject"%>
+<%@ page language="java"
+	import="java.util.*,com.ywtx.Utils.*,com.ywtx.DAO.*"
+	pageEncoding="UTF-8"%>
+<%
+	//String url = request.getParameter("url");
+	//System.out.println(URLEncoder.encode(new String(request.getHeader("referer").getBytes(),"UTF-8"),"UTF-8"));
+	//System.out.println(URLEncoder.encode(URLDecoder.decode(request.getHeader("referer"),"UTF-8"),"UTF-8"));
+	String url = request.getHeader("referer");
+	String msg = "";
+	if(url!=null&&!"".equals(url)){
+		TencentApi api = TencentApiFactory.getInstance(TencentApiFactory.DXTSERVICE);
+		msg = api.sign(url);
+	}
+	JSONObject rs = new JSONObject().fromObject(msg);
+	System.out.println(rs.toString());
+	rs.remove("jsapi_ticket");
+	//System.out.print(request.getHeader("User-Agent"));
+	rs.put("isWxBrowser", request.getHeader("User-Agent").indexOf("MicroMessenger")>=0);
+%>
+<%=rs.toString()%>

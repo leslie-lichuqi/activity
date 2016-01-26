@@ -1,0 +1,35 @@
+<div class="panel panel-default panel1" ng-controller="rankBarController" id="rank">
+  <div class="panel-heading rank-head">
+  		排行榜
+  </div>
+  <div class="panel-body rank-body">
+  		投票排行榜
+  		<button type="button" class="close" data-dismiss="modal">
+  			<span aria-hidden="true" ui-sref="rank">more>></span><span class="sr-only">Close</span>
+  		</button>
+  		<table class="table-deafult ">
+  				<tr>
+  					<td>排名</td>
+  					<td>作品名</td>
+  					<td>得票数</td>
+  				</tr>
+  				<tr ng-repeat="bean in list">
+  					<td>{{bean.rank}}</td>
+  					<td>{{bean.title}}</td>
+  					<td>{{bean.votes}}</td>
+  				</tr>
+  			</table>
+  		<!-- <hl></hl>
+  		获奖名单	
+  		<button type="button" class="close" data-dismiss="modal">
+  			<span aria-hidden="true">more>></span><span class="sr-only">Close</span>
+  		</button>
+  		<ul class="list-unstyled">
+  			<li>T0038    活动公   活动公告活动公</li>
+  			<li>T0038    活动公   活动公告活动公</li>
+  			<li>T0038    活动公   活动公告活动公</li>
+  			<li>T0038    活动公   活动公告活动公</li>
+  			<li>T0038    活动公   活动公告活动公</li>
+  		</ul> -->
+  </div>
+</div>
